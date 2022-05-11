@@ -1,30 +1,6 @@
-/*const notificationReducer = (state = null, action) => { 
-    switch (action.type) {
-        case 'SET_NOTIFICATION':
-          return action.data
-        default:
-          return state
-      }
-    }
-    
-export const setNotification = (content, duration) => {
-    return dispatch=>{
-    dispatch({
-        type: 'SET_NOTIFICATION',
-        data: content
-    })
-        setTimeout(() => {
-        dispatch({
-            type: 'SET_NOTIFICATION',
-            data: null
-        })
-        }, duration * 1000)
-    }
-}
-
-    export default notificationReducer*/
-
+//import { createSlice } from '@reduxjs/toolkit'
 const initialState = ''
+
 
 const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -68,3 +44,43 @@ export const setVoteNotification = (content, timeout) => {
 
 
 export default notificationReducer
+/*const notificationSlice = createSlice({
+  name: 'notifications',
+  initialState,
+  reducers: {
+    setNewAnecdotesNotification(state, action) {
+      const content = action.payload
+      
+      return `you added '${content}'`
+    },
+    setVoteNotification(state, action) {
+      const content = action.payload
+      return dispatch => {
+ 
+        dispatch({
+          type: 'NOTIFICATION_ADD_VOTE',
+          data: content
+        })
+        setTimeout(() => dispatch({
+            type: 'EMPTY',
+          }), timeout * 1000)
+      }
+    },
+    setEmpty() {
+      //const content = action.payload
+      return dispatch => {
+ 
+        dispatch({
+          type: 'EMPTY',
+          payload: ''
+        })
+       
+      }
+    
+    }
+
+
+  },
+})
+export const { setNewAnecdotesNotification, setVoteNotification } = notificationSlice.actions
+export default notificationSlice.reducer*/

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { addvote } from '../reducers/anecdoteReducer'
 import { setVoteNotification } from '../reducers/notificationReducer'
 import '../index.css'
@@ -9,7 +10,7 @@ const AnecdoteList = () => {
   const filter = useSelector(({ filter }) => filter)
   const anecdotes = useSelector(state => {
     
-    return state.anecdotes
+    return [...state.anecdotes]
         .sort((anecdote1, anecdote2) => anecdote2.votes - anecdote1.votes)
         .filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
   })
