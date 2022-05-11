@@ -5,10 +5,9 @@ const initialState = ''
 const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'NOTIFICATION_ADD_ANECDOTE':
-        console.log(action.data)
+       
       return `you added '${action.data}'`
     case 'NOTIFICATION_ADD_VOTE':
-        console.log('vote',action.data)
       return `you voted '${action.data}'`
     case 'EMPTY':
       return ''
