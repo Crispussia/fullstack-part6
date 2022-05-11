@@ -4,10 +4,7 @@ import anecdoteService from './services/anecdotes'
 import anecdoteReducer, { setAnecdotes  } from './reducers/anecdoteReducer'
 import filterReducer from './reducers/filterReducer'
 import notificationReducer from './reducers/notificationReducer'
-/*const reducer = combineReducers({
-    anecdotes: anecdoteReducer,
-    filter: filterReducer
-  })*/
+
   const store = configureStore({
     reducer: {
        anecdotes: anecdoteReducer,
@@ -19,10 +16,3 @@ import notificationReducer from './reducers/notificationReducer'
       store.dispatch(setAnecdotes(anecdotes))
   )
   export {store}
-  /*const reducer = combineReducers({
-    anecdotes: anecdoteReducer,
-    notification: notificationReducer,
-    filter: filterReducer
-  })
-  
-  export const store = createStore(reducer)*/

@@ -6,7 +6,6 @@ const getAll = async () => {
   const response = await axios.get(baseUrl)
   return response.data
 }
-//const getId = () => (100000 * Math.random()).toFixed(0)
 const createNew = async (anecdote) => {
   const object = { 
     content: anecdote,
@@ -14,11 +13,11 @@ const createNew = async (anecdote) => {
     votes: 0
   }
   const response = await axios.post(baseUrl, object)
-  console.log(response.data)
+//  console.log(response.data)
   return response.data
 }
 const addVote = async (anecdote) => {
-  console.log(anecdote)
+  //console.log(anecdote)
   const updateAnecdote = {
     content: anecdote.content,
     votes: anecdote.votes + 1,
