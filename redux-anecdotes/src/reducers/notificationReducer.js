@@ -1,85 +1,51 @@
-//import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 const initialState = ''
+const notificationSlice = createSlice({
+  name: 'notifications',
+  initialState,
+  reducers: {
+    setNewNotification(state, action) {
+  
+      return action.payload      
+    },
+    clearNotification(){
+     return ''
+    }
+  },
+})
+export const { setNewNotification,clearNotification} = notificationSlice.actions
+export const setNotification= (content, timeout)=> {
+  return async dispatch => {
+    dispatch(setNewNotification(content))
+    setTimeout(() => dispatch(clearNotification()), timeout * 1000)
+  }
+ }
+export default notificationSlice.reducer
 
 
-const notificationReducer = (state = initialState, action) => {
+/*const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'NOTIFICATION_ADD_ANECDOTE':
-       
-      return `you added '${action.data}'`
-    case 'NOTIFICATION_ADD_VOTE':
-      return `you voted '${action.data}'`
-    case 'EMPTY':
+    case 'SET_NOTIFICATION':     
+      return action.data
+    case 'CLEAR_NOTIFICATION':
       return ''
     default:
       return state
   }
 }
 
-export const setNewAnecdotesNotification = (content, timeout) => {
+export const setNotification = (content, timeout) => {
   return  dispatch => {
     dispatch({
-      type: 'NOTIFICATION_ADD_ANECDOTE',
+      type: 'SET_NOTIFICATION',
       data: content
     })
     setTimeout(() => dispatch({
-        type: 'EMPTY',
-      }), timeout * 1000)
-  }
-}
-
-export const setVoteNotification = (content, timeout) => {
-  return dispatch => {
- 
-    dispatch({
-      type: 'NOTIFICATION_ADD_VOTE',
-      data: content
-    })
-    setTimeout(() => dispatch({
-        type: 'EMPTY',
+        type: 'CLEAR_NOTIFICATION',
       }), timeout * 1000)
   }
 }
 
 
-export default notificationReducer
-/*const notificationSlice = createSlice({
-  name: 'notifications',
-  initialState,
-  reducers: {
-    setNewAnecdotesNotification(state, action) {
-      const content = action.payload
-      
-      return `you added '${content}'`
-    },
-    setVoteNotification(state, action) {
-      const content = action.payload
-      return dispatch => {
- 
-        dispatch({
-          type: 'NOTIFICATION_ADD_VOTE',
-          data: content
-        })
-        setTimeout(() => dispatch({
-            type: 'EMPTY',
-          }), timeout * 1000)
-      }
-    },
-    setEmpty() {
-      //const content = action.payload
-      return dispatch => {
- 
-        dispatch({
-          type: 'EMPTY',
-          payload: ''
-        })
-       
-      }
-    
-    }
+export default notificationReducer*/
 
-
-  },
-})
-export const { setNewAnecdotesNotification, setVoteNotification } = notificationSlice.actions
-export default notificationSlice.reducer*/
